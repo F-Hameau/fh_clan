@@ -1,0 +1,28 @@
+Questions ouvertes
+
+Back
+
+Quels approches vois-tu pour synchroniser de la donnée entre une base de données, et de la donnée d'un service externe accessible via une API REST ? Quels sont leurs limitations ?
+
+Use-case : synchroniser les infos de contact (nom, email, tel) entre notre produit et notre CRM.
+
+>Je vois 2 solutions sont possibles :
+
+  1- Faire un export de toute la DB du produit vers le CRM de manière régulière. La limitation étant de s'exposer à de longs transferts.
+
+  2- Ajouter une colonne last_update à la base de sorte que le client ne charge que les changements survenuent depuis une certaine date. La limitation ici est le risque de conflit.
+
+Front
+
+Dans quel cas de figure recommenderais tu d'utiliser du binding bidirectionnel vs unidirectionnel, et vice-versa ?
+
+>Je recommenderais le binding bidirectionnel dans le cas où l'on veut rapidement implémenter une architecture dans laquel la view et la data ont toujours la même donnée. Cela évite de mettre en place "à la main" un grand nombre de handlers. A l'inverse le binding unidirectionnel est plus scalable car il ralentira moins le chargement de la page et évitera des erreurs de type loop.
+
+
+API
+
+Dans le cadre d'une SPA appuyée par une API,  selon toi, quels responsabilités doivent être portées par le backend ? Lesquelles par le frontend ? Et lesquelles par les deux ?
+Comment faire pour ne pas dupliquer la logique entre les deux ?
+
+>Selon moi, dans cette situtation l'API envoie uniquement de l'information (type JSON) en fonction des appels du front et le front quant à lui est responsable de la mise en forme et du lien avec l'utilisateur.
+Dans ce cadre je séparerais au maximum la vue de la data, seul la nécessité d'une authentification utilisateur me pousserais à partager la responsabilité entre back et front.

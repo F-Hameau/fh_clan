@@ -1,0 +1,22 @@
+<style type="text/css"> body { background: white } </style>
+
+<div class="request-wrapper">
+  <%= image_tag @subsidy.name.split(" ").last.parameterize, class:'request-back' %>
+  </@><h1><%= @subsidy.name %></h1>
+  <div class="request-form">
+    <% if @subsidy.start_date < Date.today && @subsidy.end_date > Date.today %>
+      <%= simple_form_for [@subsidy, @request], :url => requests_path(@subsidy.id)  do |f| %>
+        <%= f.input :email %>
+        <%= f.input :amount, collection: 0..@subsidy.amount %>
+        <%= f.input :receipt %>
+        <%= f.submit %>
+      <% end %>
+    <% elsif @subsidy.start_date > Date.today %>
+        <h2>Cette subvention n'est pas encore disponible</h2>
+    <% elsif @subsidy.end_date < Date.today %>
+        <h2>Cette subvention n'est plus disponible</h2>
+    <% end %>
+  </div>
+
+</div>
+
