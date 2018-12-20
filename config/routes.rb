@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: 'subsidies#index'
+
+  resources :subsidies, only: [ :index ] do
+    member do
+      resources :requests, only: [ :new, :create ]
+    end
+  end
 end
