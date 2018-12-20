@@ -25,10 +25,21 @@
 }
 
 .request-form {
+  margin-top: 5%;
   padding: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(10, 10, 10, 0.6);
+  background-color: rgba(240, 240, 240, 0.6);
+  color: $blue;
+}
+
+.back-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 30px;
+  background: $blue;
   color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
 }
