@@ -1,22 +1,26 @@
-<h1>Nos subventions</h1>
+<div class="header">
+  <h1>Nos subventions</h1>
+</div>
 
 <div class="card-wrapper">
   <% @subsidies.each do |subsidy| %>
-    <%= link_to new_request_path(subsidy.id) do %>
-      <div class='card card-grid'>
-        <%= image_tag subsidy.name.split(" ").last.parameterize, height: 300, width: 400, crop: :fill, class:'card-img' %>
-        <h5 class="card-name"> <%= subsidy.name %> </h5>
-        <div class="card-date">
-          <% if subsidy.start_date < Date.today && subsidy.end_date > Date.today%>
-            <h5><i class="fas fa-check-circle" style="color:green; font-size: 22px"></i></h5>
-          <% else %>
-            <h5><i class="fas fa-times-circle" style="color: red; font-size: 22px"></i></h5>
-          <% end %>
+    <div class="card-hover">
+      <%= link_to new_request_path(subsidy.id) do %>
+        <div class='card card-grid'>
+          <%= image_tag subsidy.name.split(" ").last.parameterize, height: 300, width: 400, crop: :fill, class:'card-img' %>
+          <h5 class="card-name"> <%= subsidy.name %> </h5>
+          <div class="card-date">
+            <% if subsidy.start_date < Date.today && subsidy.end_date > Date.today%>
+              <h5><i class="fas fa-check-circle" style="color:green; font-size: 30px"></i></h5>
+            <% else %>
+              <h5><i class="fas fa-times-circle" style="color: red; font-size: 30px"></i></h5>
+            <% end %>
+          </div>
+          <div class="card-amount">
+            <h5><%= subsidy.amount %>€</h5>
+          </div>
         </div>
-        <div class="card-amount">
-          <h5><%= subsidy.amount %>€</h5>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>
