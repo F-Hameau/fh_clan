@@ -1,8 +1,8 @@
-<div class="header">
-  <h1>Nos subventions</h1>
-</div>
 
 <div class="card-wrapper">
+  <div class="header">
+    <h1>Nos subventions</h1>
+  </div>
   <% @subsidies.each do |subsidy| %>
     <div class="card-hover">
       <%= link_to new_request_path(subsidy.id) do %>
